@@ -2,10 +2,10 @@
 #include <unistd.h>
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 
-
-void    ft_push_swap(char **av)
+int    ft_push_swap(char **av)
 {
     long    number;
     int     i;
@@ -17,7 +17,10 @@ void    ft_push_swap(char **av)
     while (av[i])
     {
         number = ft_atol(av[i]);
-        add_to_list(number, &head);
+        if (number > 2147483647  || number < -2147483648 )
+            return (0);
+        if (!add_to_list(number, &head))
+            return (0);
         i++;
     }
     while (head)
@@ -25,7 +28,7 @@ void    ft_push_swap(char **av)
         printf("%d\n", head->data);
         head = head->next;
     }
-    
+   return (1); 
 }
 
 int ft_control_args(char *av)
@@ -80,15 +83,16 @@ int main(int ac, char** av)
         if (ft_control(av + 1) == 0)
         {
             write(1,"Error\n", 6);
+            return (0);
         }
     }
     if (ac == 2)
     {
-        data = ft_split(av + 1, ' ');
+        data = ft_split(av[1], ' ');
         if (data)
-            ft_push_swap(av + 1);
+            ft_push_swap(data);
     }
-    else
+    else   
         ft_push_swap(av + 1);
     return (0);
 }
