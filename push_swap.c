@@ -1,5 +1,32 @@
 #include <stddef.h>
 #include <unistd.h>
+#include "push_swap.h"
+#include <stdio.h>
+
+
+
+void    ft_push_swap(char **av)
+{
+    long    number;
+    int     i;
+    t_list  *head;
+
+    head = NULL;
+    i = 0;
+    number = 0;
+    while (av[i])
+    {
+        number = ft_atol(av[i]);
+        add_to_list(number, &head);
+        i++;
+    }
+    while (head)
+    {
+        printf("%d\n", head->data);
+        head = head->next;
+    }
+    
+}
 
 int ft_control_args(char *av)
 {
@@ -55,4 +82,13 @@ int main(int ac, char** av)
             write(1,"Error\n", 6);
         }
     }
+    if (ac == 2)
+    {
+        data = ft_split(av + 1, ' ');
+        if (data)
+            ft_push_swap(av + 1);
+    }
+    else
+        ft_push_swap(av + 1);
+    return (0);
 }
