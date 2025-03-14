@@ -43,3 +43,6 @@
 [0314/123833.262583:ERROR:file_io_posix.cc(153)] open /home/syanak/.config/Code/Crashpad/pending/49c33507-d69b-446f-be50-a3eedf7f48d6.lock: File exists (17)
 [0314/125333.263003:ERROR:file_io_posix.cc(153)] open /home/syanak/.config/Code/Crashpad/pending/21016464-d501-4141-99c5-55d967608d3a.lock: File exists (17)
 [0314/125333.263125:ERROR:file_io_posix.cc(153)] open /home/syanak/.config/Code/Crashpad/pending/49c33507-d69b-446f-be50-a3eedf7f48d6.lock: File exists (17)
+[0314/130833.300155:ERROR:file_io_posix.cc(153)] open /home/syanak/.config/Code/Crashpad/pending/21016464-d501-4141-99c5-55d967608d3a.lock: File exists (17)
+[0314/130833.302638:ERROR:file_io_posix.cc(153)] open /home/syanak/.config/Code/Crashpad/pending/49c33507-d69b-446f-be50-a3eedf7f48d6.lock: File exists (17)
+[93m[main 2025-03-14T10:19:30.382Z][0m No ptyHost heartbeat after 6 seconds
