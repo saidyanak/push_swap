@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:24:21 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/14 12:54:37 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/16 16:02:15 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	compare_string(char *dst, char *src)
 char	*ra(t_list **stack_a)
 {
 	*stack_a = (*stack_a)->next;
-	return ("ra\n");
+	return ("ra");
 }
 
 char	*sa(t_list **stack_a)
@@ -53,24 +53,22 @@ char	*sa(t_list **stack_a)
 		*stack_a = tmp;
 		last->next = *stack_a;
 	}
-	return ("sa\n");
+	return ("sa");
 }
 #include <stdio.h>
 
 char	*rra(t_list **stack_a)
 {
 	*stack_a = second_last_node(*stack_a);
-	return ("rra\n");
+	return ("rra");
 }
 
 void	actions(t_list **stack_a, t_list **stack_b, char *action)
 {
 	char	*message;
 
-	if (compare_string("pb", action))
-		;//message = pb();
-	else if (compare_string("pa", action))
-		;//message = pa();
+	if (compare_string("pa", action) || compare_string("pb", action))
+		message = push(stack_a, stack_b, action);
 	else if (compare_string("sa", action))
 		message = sa(stack_a);
 	else if (compare_string("sb", action))
@@ -90,4 +88,5 @@ void	actions(t_list **stack_a, t_list **stack_b, char *action)
 	else if (compare_string("rrr", action))
 		;//message = rrr();
 	write(1, message, ft_strlen(message));
+	write(1, "\n", 1);
 }

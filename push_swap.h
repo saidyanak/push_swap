@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:23:47 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/14 12:54:55 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/16 12:50:34 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_list	*create_list(int ac, char **av);
 void	ft_free(char **av, t_list *head, int arg_size, int cont);
 int	ft_if_same(t_list *head);
 int ft_strlen(char *str);
+char	*push(t_list **stack_a, t_list **stack_b, char *strig);
 
 #endif
