@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:24:13 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/14 12:24:19 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/16 16:40:21 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_list	*ft_push_swap(char **av, int cont)
 		return (NULL);
 	if ((is_sorted(stack_a)))
 		return (ft_free(av, stack_a, ft_lst_strlen(av), cont), write(1,
-				"sirali", 6), NULL);
+				"sirali", 6), exit(1), NULL);
 	return (stack_a);
 }
 
