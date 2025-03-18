@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:24:21 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/16 16:02:15 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/18 14:54:03 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,15 @@ char	*sa(t_list **stack_a)
 	t_list	*last;
 
 	last = second_last_node(*stack_a);
-	tmp = (*stack_a)->next;
+	tmp = *stack_a;
 	if (lst_len(*stack_a) == 2)
-	{
 		*stack_a = (*stack_a)->next;
-	}
 	else
 	{
-		(*stack_a)->next = (*stack_a)->next->next;
-		tmp->next = *stack_a;
-		*stack_a = tmp;
-		last->next = *stack_a;
+		last->next = (*stack_a)->next;
+		(*stack_a) = (*stack_a)->next;
+		tmp->next = (*stack_a)->next;
+		(*stack_a)->next = tmp;
 	}
 	return ("sa");
 }

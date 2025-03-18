@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:23:44 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/16 15:56:29 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/18 15:17:48 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,11 @@ void	sort_two(t_list **stack_a)
 
 void	sort_many(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
-
-	i = 0;
 	actions(stack_a, stack_b, "pb");
 	actions(stack_a, stack_b, "pb");
-	printf("\n");
-	printf("-------STACK A-----------\n");
-	while (i < lst_len(*stack_a))
-	{
-		printf("%d\n", (*stack_a)->data);
-		i++;
-		*stack_a = (*stack_a)->next;
-	}
-	printf("-------STACK B-----------\n");
-	i = 0;
-	while (i < lst_len(*stack_b))
-	{
-		printf("%d\n", (*stack_b)->data);
-		i++;
-		*stack_b = (*stack_b)->next;
-	}
-	/*push_b();
+	find_chepest_push(stack_a, stack_b);
 	sort_three(stack_a);
-	push_a();*/
+	//move_stack_a(stack_a, stack_b);
 }
 
 void	sort_four(t_list **stack_a, t_list **stack_b)
@@ -143,6 +124,11 @@ int	sort(t_list **stack_a, t_list **stack_b)
 		else
 			sort_many(stack_a, stack_b);
 	}
+	// actions(stack_a,stack_b, "sa");
+	// actions(stack_a,stack_b, "sa");
+	// actions(stack_a,stack_b, "pb");
+	// actions(stack_a,stack_b, "pa");
+	// actions(stack_a,stack_b, "pa");
 	printf("-------STACK A-----------\n");
 	while (i < lst_len(*stack_a))
 	{
