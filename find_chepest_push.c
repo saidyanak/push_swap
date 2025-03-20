@@ -4,23 +4,23 @@ void	set_target_a(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 {
 	t_list	*current_b;
 	t_list	*target_node;
-	int		min_index;
+	int		best_index;
 
 	
 	current_b =stack_b;
 	while (stack_a->index < a_len)
 	{
-		min_index = -2147483648;
+		best_index = -2147483648;
 		while (current_b->index < b_len)
 		{
-			if (stack_b->data < stack_a->data && stack_b > min_index)
+			if (stack_b->data < stack_a->data && stack_b->data > best_index)
 			{
-				min_index = current_b->data;
+				best_index = current_b->data;
 				target_node = current_b;
 			}
 			current_b = current_b->next;
 		}
-		if (min_index == -2147483648)
+		if (best_index == -2147483648)
 			stack_a->taget = find_max(stack_b);
 		else
 			stack_a->taget = target_node;

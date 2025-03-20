@@ -38,6 +38,8 @@ int	lst_len(t_list *list);
 void	actions(t_list **stack_a, t_list **stack_b, char *action);
 void	set_index(t_list *stack);
 void    move_stack_a(t_list **stack_a, t_list **stack_b);
+void    move_a_to_b(t_list **stack_a, t_list **stack_b);
+void    set_top_node(t_list **lst, t_list *current, char stack);
 t_list	*second_last_node(t_list *head);
 int	is_sorted(t_list *lst);
 int	ft_control(char **av);
