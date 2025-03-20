@@ -40,12 +40,12 @@ t_list  *get_cheapest(t_list *lst)
     return (cheap);
 }
 
-void    both(t_list *stack_a, t_list *stack_b, t_list *current, char* action)
+void    both(t_list **stack_a, t_list **stack_b, t_list *current, char* action)
 {
-    while (stack_a != current && stack_b != current->taget)
+    while ((*stack_a) != current && (*stack_b) != current->taget)
         actions(stack_a,stack_b, action);
-    set_index(stack_a);
-    set_index(stack_b);
+    set_index(*stack_a);
+    set_index(*stack_b);
 }
 
 void    move_a_to_b(t_list **stack_a, t_list **stack_b)

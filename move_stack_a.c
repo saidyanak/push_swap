@@ -6,7 +6,7 @@ void    move_b_to_a(t_list **stack_a, t_list **stack_b)
     actions(stack_a, stack_b, "pa");
 }
 
-void	set_target_a(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
+void	set_target_b(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 {
 	t_list	*current_a;
 	t_list	*target_node;

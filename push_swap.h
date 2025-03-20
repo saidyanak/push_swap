@@ -35,6 +35,8 @@ int					sort(t_list **stack_a, t_list **stack_b);
 char				**ft_split(char *s, char c);
 int	is_sorted(t_list *lst);
 int	lst_len(t_list *list);
+t_list	*find_min(t_list *stack);
+t_list	*find_max(t_list *stack);
 void	actions(t_list **stack_a, t_list **stack_b, char *action);
 void	set_index(t_list *stack);
 void    move_stack_a(t_list **stack_a, t_list **stack_b);
