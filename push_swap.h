@@ -21,6 +21,11 @@
 typedef struct s_list
 {
 	int				data;
+	int				median;
+	int				index;
+	int				cost;
+	int				cheapest;
+	struct s_list	*taget;
 	struct s_list	*next;
 }					t_list;
 
@@ -31,6 +36,8 @@ char				**ft_split(char *s, char c);
 int	is_sorted(t_list *lst);
 int	lst_len(t_list *list);
 void	actions(t_list **stack_a, t_list **stack_b, char *action);
+void	set_index(t_list *stack);
+void    move_stack_a(t_list **stack_a, t_list **stack_b);
 t_list	*second_last_node(t_list *head);
 int	is_sorted(t_list *lst);
 int	ft_control(char **av);

@@ -79,8 +79,9 @@ void	sort_many(t_list **stack_a, t_list **stack_b)
 	actions(stack_a, stack_b, "pb");
 	actions(stack_a, stack_b, "pb");
 	find_chepest_push(stack_a, stack_b);
-	sort_three(stack_a);
-	//move_stack_a(stack_a, stack_b);
+	if (!is_sorted(*stack_a))
+		sort_three(stack_a);
+	move_stack_a(stack_a, stack_b);
 }
 
 void	sort_four(t_list **stack_a, t_list **stack_b)
