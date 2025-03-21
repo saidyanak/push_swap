@@ -87,6 +87,8 @@ char	*rrr(t_list **stack_a, t_list **stack_b)
 void	actions(t_list **stack_a, t_list **stack_b, char *action)
 {
 	char	*message;
+	static int i = 0;
+
 
 	if (compare_string("pa", action) || compare_string("pb", action))
 		message = push(stack_a, stack_b, action);
@@ -106,4 +108,6 @@ void	actions(t_list **stack_a, t_list **stack_b, char *action)
 		message = rrr(stack_a, stack_b);
 	write(1, message, ft_strlen(message));
 	write(1, "\n", 1);
+	i++;
+	printf("%d\n",i);
 }

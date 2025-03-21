@@ -7,15 +7,15 @@ void	set_target_a(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 	int		best_index;
 
 
-	current_b =stack_b;
 	while (a_len-- != 0)
 	{
 		best_index = -2147483648;
 		b_len = lst_len(stack_b);
+		current_b =stack_b;
 		while (b_len-- != 0)
 		{
-			if (stack_b->data < stack_a->data
-			&& stack_b->data > best_index)
+			if (current_b->data < stack_a->data
+			&& current_b->data > best_index)
 			{
 				best_index = current_b->data;
 				target_node = current_b;
@@ -66,12 +66,12 @@ void	cost_analysis_a(t_list *stack_a, t_list *stack_b)
 	while (a_len-- != 0)
 	{
 		stack_a->cost = stack_a->index;
-		if (!stack_a->median)
-			stack_a->cost = (a_len - stack_a->index);
+		if (!(stack_a->median))
+			stack_a->cost = a_len - (stack_a->index);
 		if (stack_a->taget->median)
 			stack_a->cost += stack_a->taget->index;
 		else
-			stack_a->cost += b_len - stack_a->taget->index;
+			stack_a->cost += b_len - (stack_a->taget->index);
 		stack_a = stack_a->next;
 	}
 

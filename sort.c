@@ -47,7 +47,7 @@ int	min_data(t_list *stack_a)
 	while (i < len)
 	{
 		if (number > stack_a->data)
-			number = stack_a->data;
+		number = stack_a->data;
 		stack_a = stack_a->next;
 		i++;
 	}
@@ -55,6 +55,16 @@ int	min_data(t_list *stack_a)
 }
 
 #include <stdio.h>
+static void	min_on_top(t_list **a) //Define a function that moves the smallest number to the top
+{
+	while ((*a)->data != find_min(*a)->data) //As long as the smallest number is not at the top
+	{
+		if (find_min(*a)->median) //Rotate or reverse rotate according to the position of the node on the median
+			actions(a,NULL, "ra");
+		else
+			actions(a,NULL, "rra");
+	}
+}
 
 void	sort_three(t_list **stack_a)
 {
@@ -82,6 +92,8 @@ void	sort_many(t_list **stack_a, t_list **stack_b)
 	if (!is_sorted(*stack_a))
 		sort_three(stack_a);
 	move_stack_a(stack_a, stack_b);
+	set_index(*stack_a);
+	min_on_top(stack_a);
 }
 
 void	sort_four(t_list **stack_a, t_list **stack_b)
@@ -108,16 +120,6 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 	else if ((*stack_b)->data < min_data(*stack_a))
 		actions(stack_a, stack_b, "pa");
 }
-static void	min_on_top(t_list **a) //Define a function that moves the smallest number to the top
-{
-	while ((*a)->data != find_min(*a)->data) //As long as the smallest number is not at the top
-	{
-		if (find_min(*a)->median) //Rotate or reverse rotate according to the position of the node on the median
-			actions(a,NULL, "ra");
-		else
-			actions(a,NULL, "rra");
-	}
-}
 
 int	sort(t_list **stack_a, t_list **stack_b)
 {
@@ -135,7 +137,5 @@ int	sort(t_list **stack_a, t_list **stack_b)
 		else
 			sort_many(stack_a, stack_b);
 	}
-	set_index(*stack_a);
-	min_on_top(stack_a);
 	return (1);
 }
