@@ -44,3 +44,44 @@ t_list	*find_max(t_list *stack) //Define a function that searches a stack and re
 	}
 	return (NULL);
 }
+
+
+t_list	*get_cheapest(t_list *stack) //Define a function that searches for the cheapest node, that is set by bool
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+int	ft_if_same(t_list *head)
+{
+	t_list		*last;
+	static int	j = 0;
+	int			i;
+	int arg_size;
+
+	arg_size = lst_len(head);
+	i = 0;
+	if (arg_size < 2)
+		return (0);
+	last = head->next;
+	while (i < (arg_size - 1))
+	{
+		if (head->data == last->data)
+		{
+			return (ft_free(NULL, head, arg_size, 0), exit(1), 1);
+		}
+		last = last->next;
+		i++;
+	}
+	j++;
+	if (j == (arg_size - 1))
+		return (0);
+	return (ft_if_same(head->next));
+}

@@ -30,32 +30,7 @@ void	set_target_a(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 	}
 }
 
-void	set_index(t_list *stack)
-{
-	int		i;
-	int 	median;
-	t_list	*head;
 
-	head = stack;
-	if (stack->next == NULL)
-		return;
-	median = lst_len(stack) / 2;
-	i = 0;
-	while (stack)
-	{
-		stack->index = i;
-		if (stack->index <= median)
-			stack->median = 1;
-		else
-			stack->median = 0;
-		if (stack->next == NULL)
-			return;
-		stack = stack->next;
-		i++;
-		if (head == stack)
-			break;
-	}
-}
 void	cost_analysis_a(t_list *stack_a, t_list *stack_b)
 {
 	int	a_len;
@@ -106,7 +81,7 @@ void	prepare_stack_a(t_list *stack_a, t_list *stack_b)
 	set_cheapest(stack_a);
 }
 
-void	find_chepest_push(t_list **stack_a, t_list **stack_b)
+void	move_stack_b(t_list **stack_a, t_list **stack_b)
 {
 	while (lst_len(*stack_a) > 3 && !(is_sorted(*stack_a)))
 	{

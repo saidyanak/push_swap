@@ -21,19 +21,6 @@ void    set_top_node(t_list **lst, t_list *current, char stack)
     }
 }
 
-t_list	*get_cheapest(t_list *stack) //Define a function that searches for the cheapest node, that is set by bool
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
-
 void    both(t_list **stack_a, t_list **stack_b, t_list *current, char* action)
 {
     while ((*stack_a) != current && (*stack_b) != current->taget)
