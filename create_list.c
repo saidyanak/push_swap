@@ -12,6 +12,24 @@
 
 #include "push_swap.h"
 
+void ft_zero(t_list *head)
+{
+	t_list *tmp;
+
+	tmp = head;
+	while (head)
+	{
+		head->cheapest = 0;
+		head->cost		= 0;
+		head->index		= 0;
+		head->median	=0;
+		head->taget		=NULL;
+		head = head->next;
+		if (tmp == head)
+			break;	
+	}
+}
+
 t_list	*create_linked_list(char **av, int cont)
 {
 	long	number;
@@ -64,5 +82,6 @@ t_list	*create_list(int ac, char **av)
 	}
 	else
 		head = ft_push_swap(av + 1, 1);
+	ft_zero(head);
 	return (head);
 }

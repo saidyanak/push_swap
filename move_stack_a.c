@@ -47,7 +47,7 @@ void    prepare_stack_b(t_list *stack_a, t_list *stack_b)
 
 void    move_stack_a(t_list **stack_a, t_list **stack_b)
 {
-    while (*stack_b)
+    while (*stack_b != NULL)
     {
         prepare_stack_b(*stack_a, *stack_b);
         move_b_to_a(stack_a, stack_b);

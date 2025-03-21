@@ -6,7 +6,6 @@ void	set_target_a(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 	t_list	*target_node;
 	int		best_index;
 
-
 	while (a_len-- != 0)
 	{
 		best_index = -2147483648;
@@ -35,21 +34,22 @@ void	cost_analysis_a(t_list *stack_a, t_list *stack_b)
 {
 	int	a_len;
 	int	b_len;
+	int len_a;
 
 	a_len = lst_len(stack_a);
+	len_a = a_len;
 	b_len = lst_len(stack_b);
 	while (a_len-- != 0)
 	{
 		stack_a->cost = stack_a->index;
 		if (!(stack_a->median))
-			stack_a->cost = a_len - (stack_a->index);
+			stack_a->cost = len_a - (stack_a->index);
 		if (stack_a->taget->median)
 			stack_a->cost += stack_a->taget->index;
 		else
 			stack_a->cost += b_len - (stack_a->taget->index);
 		stack_a = stack_a->next;
 	}
-
 }
 
 void		set_cheapest(t_list *stack_a)
