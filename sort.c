@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:23:44 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/18 15:17:48 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/21 03:24:54 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sort_many(t_list **stack_a, t_list **stack_b)
 
 void	sort_four(t_list **stack_a, t_list **stack_b)
 {
-	actions(stack_a, stack_b, "pb");
+	actions(stack_a, stack_b, "pb");// pb pb rrb pb pa pa rra pa
 	sort_three(stack_a);
 	if ((*stack_b)->data > max_data(*stack_a))
 	{
@@ -108,6 +108,16 @@ void	sort_four(t_list **stack_a, t_list **stack_b)
 	else if ((*stack_b)->data < min_data(*stack_a))
 		actions(stack_a, stack_b, "pa");
 }
+static void	min_on_top(t_list **a) //Define a function that moves the smallest number to the top
+{
+	while ((*a)->data != find_min(*a)->data) //As long as the smallest number is not at the top
+	{
+		if (find_min(*a)->median) //Rotate or reverse rotate according to the position of the node on the median
+			actions(a,NULL, "ra");
+		else
+			actions(a,NULL, "rra");
+	}
+}
 
 int	sort(t_list **stack_a, t_list **stack_b)
 {
@@ -125,17 +135,7 @@ int	sort(t_list **stack_a, t_list **stack_b)
 		else
 			sort_many(stack_a, stack_b);
 	}
-	// actions(stack_a,stack_b, "sa");
-	// actions(stack_a,stack_b, "sa");
-	// actions(stack_a,stack_b, "pb");
-	// actions(stack_a,stack_b, "pa");
-	// actions(stack_a,stack_b, "pa");
-	printf("-------STACK A-----------\n");
-	while (i < lst_len(*stack_a))
-	{
-		printf("%d\n", (*stack_a)->data);
-		i++;
-		*stack_a = (*stack_a)->next;
-	}
+	set_index(*stack_a);
+	min_on_top(stack_a);
 	return (1);
 }

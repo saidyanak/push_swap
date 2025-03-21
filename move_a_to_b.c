@@ -2,42 +2,36 @@
 
 void    set_top_node(t_list **lst, t_list *current, char stack)
 {
-    while (*lst == current)
+    while (*lst != current)
     {
         if (stack == 'a')
         {
             if (current->median)
                 actions(lst, NULL, "ra");
-            else 
+            else
                 actions(lst, NULL, "rra");
         }
         else if (stack == 'b')
         {
             if (current->median)
                 actions(NULL, lst, "rb");
-            else 
+            else
                 actions(NULL, lst, "rrb");
-        }  
+        }
     }
 }
 
-t_list  *get_cheapest(t_list *lst)
+t_list	*get_cheapest(t_list *stack) //Define a function that searches for the cheapest node, that is set by bool
 {
-    t_list  *cheap;
-    t_list  *head;
-    int     min_cost;
-
-    min_cost = 2147483647;
-    head = lst;
-    while (lst)
-    {
-        if (lst->cost < min_cost)
-            cheap = lst;
-        lst = lst->next;
-        if (lst == head)
-            break;
-    }
-    return (cheap);
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
 void    both(t_list **stack_a, t_list **stack_b, t_list *current, char* action)

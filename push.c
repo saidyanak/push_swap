@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:47:27 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/18 15:14:21 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:31:34 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,26 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 		second_last_node(*stack_a)->next = *stack_b;
 		(*stack_b)->next = (*stack_a);
 		*stack_a = *stack_b;
+		*stack_b = NULL;
+		return ;
 	}
-	else
+	if (lst_len(*stack_b) == 2)
 	{
 		tmp = *stack_b;
-		second_last_node(*stack_b)->next = (*stack_b)->next;
+		(*stack_b)->next->next = NULL;
 		*stack_b = (*stack_b)->next;
 		second_last_node(*stack_a)->next = tmp;
-		tmp->next = *stack_a;
+		tmp->next = (*stack_a);
 		*stack_a = tmp;
+		return ;
+
 	}
+	tmp = *stack_b;
+	second_last_node(*stack_b)->next = (*stack_b)->next;
+	*stack_b = (*stack_b)->next;
+	second_last_node(*stack_a)->next = tmp;
+	tmp->next = (*stack_a);
+	*stack_a = tmp;
 }
 void	push_b(t_list **stack_a, t_list **stack_b)
 {

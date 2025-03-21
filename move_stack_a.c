@@ -13,12 +13,13 @@ void	set_target_b(t_list *stack_a, t_list *stack_b, int a_len,int b_len)
 	int		best_index;
 
 	current_a =stack_a;
-	while (stack_b->index < b_len)
+	while (b_len-- != 0)
 	{
 		best_index = 2147483647;
-		while (current_a->index < a_len)
+		a_len = lst_len(stack_a);
+		while (a_len-- != 0)
 		{
-			if (current_a->data > stack_b->data 
+			if (current_a->data > stack_b->data
 				&& current_a->data < best_index)
 			{
 				best_index = current_a->data;
@@ -38,7 +39,10 @@ void    prepare_stack_b(t_list *stack_a, t_list *stack_b)
 {
     set_index(stack_a);
     set_index(stack_b);
-    set_target_b(stack_a, stack_b, lst_len(stack_a), lst_len(stack_b));
+	if (stack_b->next == NULL)
+    	set_target_b(stack_a, stack_b, lst_len(stack_a), 1);
+	else
+		set_target_b(stack_a, stack_b, lst_len(stack_a),  lst_len(stack_b));
 }
 
 void    move_stack_a(t_list **stack_a, t_list **stack_b)

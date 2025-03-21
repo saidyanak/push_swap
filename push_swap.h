@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:23:47 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/18 12:10:55 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/20 22:17:52 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <limits.h>
 
 typedef struct s_list
 {

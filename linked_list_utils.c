@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:23:55 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/14 12:23:58 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/21 01:19:01 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,28 @@ t_list	*second_last_node(t_list *head)
 {
 	t_list	*tmp;
 
+	if (lst_len(head) == 2)
+		return (head->next);
 	tmp = head;
-	head = head->next;
-	while (tmp != head->next)
-		head = head->next;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		if (tmp->next == head)
+			return (tmp);
+	}
 	return (head);
 }
 
 int	lst_len(t_list *list)
 {
-	t_list	*tmp;
 	int		len;
+	t_list	*head;
 
 	len = 0;
-	tmp = list;
-	while (list->next != tmp)
+	head = list;
+	while (head->next != list)
 	{
-		list = list->next;
+		head = head->next;
 		len++;
 	}
 	return (len + 1);

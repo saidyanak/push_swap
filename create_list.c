@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:24:13 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/18 11:53:34 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/21 02:33:15 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_list	*create_linked_list(char **av, int cont)
 	t_list	*head;
 
 	argsize = ft_lst_strlen(av);
-	printf("%d\n", argsize);
 	head = NULL;
 	i = 0;
 	number = 0;

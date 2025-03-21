@@ -6,7 +6,7 @@
 /*   By: syanak <syanak@student.42kocaeli.com.tr >  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:24:21 by syanak            #+#    #+#             */
-/*   Updated: 2025/03/18 14:54:03 by syanak           ###   ########.fr       */
+/*   Updated: 2025/03/21 03:46:10 by syanak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,35 @@ char	*sa(t_list **stack_a)
 	}
 	return ("sa");
 }
-#include <stdio.h>
 
+char	*rb(t_list **stack_b)
+{
+	*stack_b = (*stack_b)->next;
+	return ("rb");
+}
 char	*rra(t_list **stack_a)
 {
 	*stack_a = second_last_node(*stack_a);
 	return ("rra");
+}
+char	*rrb(t_list **stack_b)
+{
+	*stack_b = second_last_node(*stack_b);
+	return ("rrb");
+}
+
+char	*rr(t_list **stack_a, t_list **stack_b)
+{
+	ra(stack_a);
+	rb(stack_b);
+	return ("rr");
+}
+
+char	*rrr(t_list **stack_a, t_list **stack_b)
+{
+	rra(stack_a);
+	rrb(stack_b);
+	return ("rrr");
 }
 
 void	actions(t_list **stack_a, t_list **stack_b, char *action)
@@ -69,22 +92,18 @@ void	actions(t_list **stack_a, t_list **stack_b, char *action)
 		message = push(stack_a, stack_b, action);
 	else if (compare_string("sa", action))
 		message = sa(stack_a);
-	else if (compare_string("sb", action))
-		;//message = sb();
-	else if (compare_string("ss", action))
-		;//message = ss();
 	else if (compare_string("ra", action))
 		message = ra(stack_a);
 	else if (compare_string("rb", action))
-		;//message = rb();
+		message = rb(stack_b);
 	else if (compare_string("rr", action))
-		;//message = rr();
+		message = rr(stack_a, stack_b);
 	else if (compare_string("rra", action))
 		message = rra(stack_a);
 	else if (compare_string("rrb", action))
-		;//message = rrb();
+		message = rrb(stack_b);
 	else if (compare_string("rrr", action))
-		;//message = rrr();
+		message = rrr(stack_a, stack_b);
 	write(1, message, ft_strlen(message));
 	write(1, "\n", 1);
 }
